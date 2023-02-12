@@ -1,0 +1,23 @@
+
+debug: true
+profiles.active: dev
+
+
+#mongodb
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/devDB
+      auto-index-creation: true
+
+
+# line config
+line.bot:
+  handler.enabled: true
+  handler.path: /callback
+  channel-token: ${a-channel-token}
+  channel-secret: ${a-channel-secret}
+  channelTokenSupplyMode: fixed
+  connectTimeout: 60000
+  readTimeout: 60000
+  writeTimeout: 60000
