@@ -29,7 +29,7 @@ public class LineMessageServiceImpl implements LineMessageService {
         lineMessage.setMessageId(event.getMessage().getId());
         lineMessage.setText(event.getMessage().getText());
         lineMessage.setReplyToken(event.getReplyToken());
-        lineMessage.setType(lineMessage.getType());
+        lineMessage.setType("text");
         lineMessage.setUserId(event.getSource().getUserId());
         lineMessage.setTimestamp(LocalDateTime.ofInstant(event.getTimestamp(), ZoneOffset.UTC));
 
@@ -41,6 +41,7 @@ public class LineMessageServiceImpl implements LineMessageService {
         return new TextMessage(originalMessageText);
     }
 
+    @Override
     public List<LineMessage> getListByUserId(String userId){
         return messageRepository.findAllByUserId(userId);
     }

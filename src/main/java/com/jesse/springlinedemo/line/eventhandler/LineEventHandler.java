@@ -21,7 +21,6 @@ import org.springframework.stereotype.Component;
 public class LineEventHandler {
 
     private final LineMessageService lineMessageService;
-    private final MessageRepository messageRepository;
 
 
     @EventMapping
