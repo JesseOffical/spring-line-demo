@@ -1,5 +1,7 @@
 package com.jesse.springlinedemo.line.eventhandler;
 
+import com.jesse.springlinedemo.line.model.LineMessage;
+import com.jesse.springlinedemo.line.repository.MessageRepository;
 import com.jesse.springlinedemo.line.service.LineMessageService;
 import com.linecorp.bot.model.event.Event;
 import com.linecorp.bot.model.event.MessageEvent;
@@ -18,15 +20,21 @@ import org.springframework.stereotype.Component;
 @LineMessageHandler
 public class LineEventHandler {
 
+    private final LineMessageService lineMessageService;
+    private final MessageRepository messageRepository;
+
 
     @EventMapping
-    public void handleTextMessageEvent(MessageEvent<TextMessageContent> event) {
+    public TextMessage handleTextMessageEvent(MessageEvent<TextMessageContent> event) {
         log.info("event: " + event);
+        lineMessageService.saveFromTextMessageEvent(event);
+
+        return null;
 
     }
 
     @EventMapping
     public void handleDefaultMessageEvent(Event event) {
-        log.info("event: {}",event);
+        log.info("event1: {}",event);
     }
 }
