@@ -24,11 +24,9 @@ public class LineEventHandler {
 
 
     @EventMapping
-    public TextMessage handleTextMessageEvent(MessageEvent<TextMessageContent> event) {
+    public void handleTextMessageEvent(MessageEvent<TextMessageContent> event) {
         log.info("event: " + event);
         lineMessageService.saveFromTextMessageEvent(event);
-
-        return null;
 
     }
 
